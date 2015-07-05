@@ -1,0 +1,189 @@
+
+<head>
+    <meta charset="utf-8">
+    <title>Fresh Tomatoes!</title>
+
+    <!-- Bootstrap 3 -->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <style type="text/css" media="screen">
+        body {
+            padding-top: 80px;
+        }
+        #trailer .modal-dialog {
+            margin-top: 200px;
+            width: 640px;
+            height: 480px;
+        }
+        .hanging-close {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            z-index: 9001;
+        }
+        #trailer-video {
+            width: 100%;
+            height: 100%;
+        }
+        .movie-tile {
+            margin-bottom: 20px;
+            padding-top: 20px;
+        }
+        .movie-tile:hover {
+            background-color: #EEE;
+            cursor: pointer;
+        }
+        .scale-media {
+            padding-bottom: 56.25%;
+            position: relative;
+        }
+        .scale-media iframe {
+            border: none;
+            height: 100%;
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 0;
+            background-color: white;
+        }
+    </style>
+    <script type="text/javascript" charset="utf-8">
+        // Pause the video when the modal is closed
+        $(document).on('click', '.hanging-close, .modal-backdrop, .modal', function (event) {
+            // Remove the src so the player itself gets removed, as this is the only
+            // reliable way to ensure the video stops playing in IE
+            $("#trailer-video-container").empty();
+        });
+        // Start playing the video whenever the trailer modal is opened
+        $(document).on('click', '.movie-tile', function (event) {
+            var trailerYouTubeId = $(this).attr('data-trailer-youtube-id')
+            var sourceUrl = 'http://www.youtube.com/embed/' + trailerYouTubeId + '?autoplay=1&html5=1';
+            $("#trailer-video-container").empty().append($("<iframe></iframe>", {
+              'id': 'trailer-video',
+              'type': 'text-html',
+              'src': sourceUrl,
+              'frameborder': 0
+            }));
+        });
+        // Animate in the movies when the page loads
+        $(document).ready(function () {
+          $('.movie-tile').hide().first().show("fast", function showNext() {
+            $(this).next("div").show("fast", showNext);
+          });
+        });
+    </script>
+</head>
+
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <!-- Trailer Video Modal -->
+    <div class="modal" id="trailer">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <a href="#" class="hanging-close" data-dismiss="modal" aria-hidden="true">
+            <img src="https://lh5.ggpht.com/v4-628SilF0HtHuHdu5EzxD7WRqOrrTIDi_MhEG6_qkNtUK5Wg7KPkofp_VJoF7RS2LhxwEFCO1ICHZlc-o_=s0#w=24&h=24"/>
+          </a>
+          <div class="scale-media" id="trailer-video-container">
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Main Page Content -->
+    <div class="container">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Fresh Tomatoes Movie Trailers</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="BkL9l7qovsE" data-toggle="modal" data-target="#trailer">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b3/CasablancaPoster-Gold.jpg" width="220" height="342">
+    <h1>Casablanca</h1>
+    <h5>Humphrey Bogart, Ingrid Bergman, Paul Henreid</h5>
+    <h5>Release Date: January 23, 1943</h5>
+    <h5>Rating: Not Rated</h5>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="TbQm5doF_Uc" data-toggle="modal" data-target="#trailer">
+    <img src="https://upload.wikimedia.org/wikipedia/en/0/05/Frozen_%282013_film%29_poster.jpg" width="220" height="342">
+    <h1>Frozen</h1>
+    <h5>Kristen Bell, Idina Menzel, Jonathan Groff, Josh Gad, Santino Fontana</h5>
+    <h5>Release Date: November 27, 2013</h5>
+    <h5>Rating: PG</h5>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="nuPZUUED5uk" data-toggle="modal" data-target="#trailer">
+    <img src="https://upload.wikimedia.org/wikipedia/en/5/5e/The_Imitation_Game_poster.jpg" width="220" height="342">
+    <h1>Imitation Game</h1>
+    <h5>Benedict Cumberbatch, Keira Knightley, Matthew Goode, Rory Kinnear, Charles Dance, Mark Strong</h5>
+    <h5>Release Date: 28 November 2014</h5>
+    <h5>Rating: PG-13</h5>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="ek7T9Gyl_J4" data-toggle="modal" data-target="#trailer">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Northbynorthwest1.jpg" width="220" height="342">
+    <h1>North by Northwest</h1>
+    <h5>Cary Grant, Eva Marie Saint, James Mason, Jessie Royce Landis</h5>
+    <h5>Release Date: July 28, 1959</h5>
+    <h5>Rating: Not Rated</h5>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="uPIEn0M8su0" data-toggle="modal" data-target="#trailer">
+    <img src="https://upload.wikimedia.org/wikipedia/en/6/67/Forrest_Gump_poster.jpg" width="220" height="342">
+    <h1>Forest Gump</h1>
+    <h5>Tom Hanks, Robin Wright, Gary Sinise, Mykelti Williamson, Sally Field</h5>
+    <h5>Release Date: July 6, 1994</h5>
+    <h5>Rating: PG-13</h5>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="tRlzmyveDHE" data-toggle="modal" data-target="#trailer">
+    <img src="https://upload.wikimedia.org/wikipedia/en/7/7c/Beautybeastposter.jpg" width="220" height="342">
+    <h1>Beauty and the Beast</h1>
+    <h5>Paige O'Hara, Robby Benson, Richard White, Jerry Orbach, Angela Lansbury</h5>
+    <h5>Release Date: November 22, 1991</h5>
+    <h5>Rating: G</h5>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="VWGqGHMO294" data-toggle="modal" data-target="#trailer">
+    <img src="https://upload.wikimedia.org/wikipedia/en/d/d6/Planes_trains_and_automobiles.jpg" width="220" height="342">
+    <h1>Planes, Trains and Automobiles</h1>
+    <h5>Steve Martin, John Candy</h5>
+    <h5>Release Date: November 25, 1987</h5>
+    <h5>Rating: R</h5>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="YWwAOutgWBQ" data-toggle="modal" data-target="#trailer">
+    <img src="https://upload.wikimedia.org/wikipedia/en/b/b8/A_Beautiful_Mind_Poster.jpg" width="220" height="342">
+    <h1>A Beautiful Mind</h1>
+    <h5>Russell Crowe, Ed Harris, Jennifer Connelly, Christopher Plummer</h5>
+    <h5>Release Date: December 21, 2001</h5>
+    <h5>Rating: PG-13</h5>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="WDcMUCpppVs" data-toggle="modal" data-target="#trailer">
+    <img src="https://upload.wikimedia.org/wikipedia/en/b/b8/Good_Will_Hunting_theatrical_poster.jpg" width="220" height="342">
+    <h1>Good Will Hunting</h1>
+    <h5>Matt Damon, Robin Williams, Ben Affleck, Minnie Driver, Stellan Skarsgard</h5>
+    <h5>Release Date: December 5, 1997</h5>
+    <h5>Rating: R</h5>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="FpKaB5dvQ4g" data-toggle="modal" data-target="#trailer">
+    <img src="https://upload.wikimedia.org/wikipedia/en/a/ae/BourneIdentityfilm.jpg" width="220" height="342">
+    <h1>The Bourne Identity</h1>
+    <h5>Matt Damon, Franka Potente, Chris Cooper, Clive Owen, Julia Stiles</h5>
+    <h5>Release Date: June 14, 2002</h5>
+    <h5>Rating: PG-13</h5>
+</div>
+
+    </div>
+  </body>
+</html>
